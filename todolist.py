@@ -1,56 +1,41 @@
-def main():
-    tasks = []
+tasks=[]
+def displaytask():
+    print("here are the tasks")
+    print(task)
+def addtask():
+    task=input("Enter a task to be added")
+    task.append(tasks)
+    print(f"TAsk {task} added to the list")
+def removetask():
+    task=input("Enter task to remove")
+    if task in tasks:
+        task.remove(tasks)
+        print(f"Task {task} is removed")
+    else:
+        print(f"Task {task} is not found")
 
-    while True:
-        print("\n===== To-Do List =====")
-        print("1. Display Task")
-        print("2. Add Tasks")
-        print("3. Mark Task as Done")
-        print("4. Remove the task")
-        print("5. Exit")
+while True:
+    print("Please select your task")
+    print("1. Display the task")
+    print("2. Add the task")
 
-        choice = input("Enter your choice: ")
+    print("4. Remove the task ")
+    print("5. Quit")
+    choice=input("enter your choice")
+    if choice=="1":
+        displaytask()
 
-        if choice == '1':
-            print("\nTasks:")
-            for index, task in enumerate(tasks):
-                status = "Done" if task["done"] else "Not Done"
-                print(f"{index + 1}. {task['task']} - {status}")
-
-
-        elif choice == '2':
-            print()
-            n_tasks = int(input("How may task you want to add: "))
-
-            for i in range(n_tasks):
-                task = input("Enter the task: ")
-                tasks.append({"task": task, "done": False})
-                print("Task added!")
-
-
-        elif choice == '3':
-            task_index = int(input("Enter the task number to mark as done: ")) - 1
-            if 0 <= task_index < len(tasks):
-                tasks[task_index]["done"] = True
-                print("Task marked as done!")
-            else:
-                print("Invalid task number.")
-
-        elif choice == '4':
-            task=input("what have to removed")
-            if task in tasks:
-                tasks.remove(task)
-                print("removed task",task)
-            else:
-                print("invalid")
+    elif choice=="2":
+        addtask()
 
 
-        elif choice=='5':
-            break
 
-        else:
-            print("Invalid choice. Please try again.")
+    elif choice=="4":
+        removetask()
 
+    elif choice=="5":
+        break
 
-if _name_ == "_main_":
-    main()
+    else:
+        print("invalid input. Try again")
+
